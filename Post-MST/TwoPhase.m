@@ -20,7 +20,8 @@ FINAL_BFS=zeros(1,size(A,2));
 FINAL_BFS(OptBFS)=OptA(:,end);
 FINAL_BFS(end)=sum(FINAL_BFS.*C);
 OptimalBFS=array2table(FINAL_BFS);
-OptimalBFS.Properties.VariableNames(1:size(OptimalBFS,2))=OptVariables
+OptimalBFS.Properties.VariableNames(1:size(OptimalBFS,2))=OptVariables;
+display(OptimalBFS);
 
 
 function [BFS,A]=simp(A,BV,D,Variables)
@@ -61,7 +62,8 @@ function [BFS,A]=simp(A,BV,D,Variables)
             TABLE.Properties.VariableNames(1:size(ZCj,2))=Variables;
             display(table);
             BFS(BV)=A(:,end);
-        else RUN=false;
+        else
+            RUN=false;
             fprintf('Current BFS is Optimal\n');
             fprintf('Phase 1 END\n\n\n');
             BFS=BV;
