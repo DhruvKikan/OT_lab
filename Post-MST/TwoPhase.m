@@ -9,16 +9,21 @@ C=[-7.5 3 0 0 0 -1 -1 0];
 A=[3 -1 -1 -1 0 1 0 3; 1 -1 1 0 -1 0 1 2];
 BV=[6 7];
 D=[0 0 0 0 0 -1 -1 0]; 
-StartBV=find(D<0);  
+
+StartBV=find(D<0);
+
 fprintf('Phase 1\n');
 [BFS,A]=simp(A,BV,D,Variables);
+
 fprintf('Phase 2\n');
-A(:,StartBV)=[];  
+A(:,StartBV)=[];
 C(:,StartBV)=[]; 
 [OptBFS,OptA]=simp(A,BFS,C,OptVariables);
+
 FINAL_BFS=zeros(1,size(A,2));
 FINAL_BFS(OptBFS)=OptA(:,end);
 FINAL_BFS(end)=sum(FINAL_BFS.*C);
+
 OptimalBFS=array2table(FINAL_BFS);
 OptimalBFS.Properties.VariableNames(1:size(OptimalBFS,2))=OptVariables;
 display(OptimalBFS);

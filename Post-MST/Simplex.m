@@ -52,6 +52,7 @@ while flag
         end
         zjcj=zjcj-zjcj(pvt_col).*A(pvt_row,:);
         zcj=[zjcj;A];
+        
         table=array2table(zcj);
         table.Properties.VariableNames={'x1','x2','s1','s2','s3','sol'};
         display(table);

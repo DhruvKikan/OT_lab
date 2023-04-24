@@ -9,10 +9,10 @@ b = [2;3;1];
 
 [m,n] = size(a);
 s = eye(m);
+
 A = [a s b];
 
 bv = n+1:1:n+m;
-
 zjcj = cost(bv)*A - cost;
 zcj = [zjcj; A];
 
@@ -52,7 +52,8 @@ while flag
     zcj = [zjcj;A];
 
     table = array2table(zcj);
-    table.Properties.VariableNames(1:n+m+1) = {'x1','x2','s1','s2','a1','Sol'}
+    table.Properties.VariableNames(1:n+m+1) = {'x1','x2','s1','s2','a1','Sol'};
+    display(table);
     else
         flag = false;
         fprintf("The Current BFS is Optimal \n")
